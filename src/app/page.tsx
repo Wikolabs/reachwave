@@ -147,9 +147,14 @@ export default function ReachWave() {
             Vos premières réponses en 72h
           </h2>
           <p className="text-orange-100 text-xl mb-10">Setup en 1 journée. Séquences actives le lendemain.</p>
-          <a href="mailto:hello@wikolabs.com?subject=ReachWave — Demande de démo" className="inline-block bg-white text-orange-600 hover:bg-orange-50 px-10 py-5 rounded-full font-black text-xl transition-all shadow-xl">
-            Lancer mes campagnes →
-          </a>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-orange-600 hover:bg-orange-50 px-10 py-5 rounded-full font-black text-xl transition-all shadow-xl">
+              📅 Réserver un créneau →
+            </a>
+            <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20ReachWave%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-orange-600 hover:bg-orange-50 px-10 py-5 rounded-full font-black text-xl transition-all shadow-xl" style={{ background: "#25d366", borderColor: "#25d366" }}>
+              💬 WhatsApp →
+            </a>
+          </div>
           <p className="text-orange-200 text-sm mt-5">Essai 14 jours. Aucune carte bancaire.</p>
         </div>
       </section>
