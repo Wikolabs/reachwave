@@ -1,0 +1,45 @@
+name: Deploy reachwave
+
+on:
+  push:
+    branches: [main]
+
+env:
+  IMAGE_NAME: ghcr.io/wikolabs/reachwave
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/wikolabs/reachwave:latest
+
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.WIKOLABS_VM_HOST }}
+          username: ${{ secrets.WIKOLABS_VM_USER }}
+          key: ${{ secrets.WIKOLABS_VM_SSH_KEY }}
+          script: |
+            docker pull ghcr.io/wikolabs/reachwave:latest
+            docker stop reachwave 2>/dev/null || true
+            docker rm reachwave 2>/dev/null || true
+            docker run -d               --name reachwave               -p 3003:3000               --restart unless-stopped               ghcr.io/wikolabs/reachwave:latest
+            echo "Deployed reachwave on port 3003"
