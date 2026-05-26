@@ -31,7 +31,7 @@ jobs:
           GHCR_USER: ${{ github.actor }}
         run: |
           mkdir -p ~/.ssh
-          printf '%s' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H "$VM_HOST" >> ~/.ssh/known_hosts 2>/dev/null
           ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no "$VM_USER@$VM_HOST"             "echo '$GHCR_TOKEN' | docker login ghcr.io -u '$GHCR_USER' --password-stdin             && docker pull ghcr.io/wikolabs/reachwave:latest             && (docker stop reachwave 2>/dev/null; docker rm reachwave 2>/dev/null; true)             && docker run -d --name reachwave -p 3003:3000 --restart unless-stopped ghcr.io/wikolabs/reachwave:latest             && echo 'Deployed reachwave on port 3003'"
