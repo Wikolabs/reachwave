@@ -1,0 +1,36 @@
+version: "3.9"
+
+# ReachWave demo — production-ready POC.
+# 2 services orchestrated:
+#   - reachwave (Next.js frontend on host port 3003)
+#   - reachwave-backend (FastAPI Python, internal only on 8000)
+# Internal network so the frontend can reach the backend by service name.
+
+services:
+  reachwave-backend:
+    image: ghcr.io/wikolabs/reachwave-backend:latest
+    container_name: reachwave-backend
+    restart: unless-stopped
+    environment:
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    networks:
+      - reachwave-net
+
+  reachwave:
+    image: ghcr.io/wikolabs/reachwave:latest
+    container_name: reachwave
+    restart: unless-stopped
+    ports:
+      - "3003:3000"
+    environment:
+      BACKEND_URL: "http://reachwave-backend:8000"
+    depends_on:
+      - reachwave-backend
+    networks:
+      - reachwave-net
+
+networks:
+  reachwave-net:
+    name: reachwave-net
+    driver: bridge
