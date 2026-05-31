@@ -1,138 +1,167 @@
-﻿export default function ReachWave() {
+﻿"use client";
+
+const P = {
+  name: "ReachWave",
+  tagLabel: "Outreach multicanal · Email · LinkedIn · SMS",
+  taglines: ["Le bon message.", "Sur le bon canal.", "Au bon moment."],
+  taglineAccentIdx: 1,
+  desc: "ReachWave orchestre vos sequences multicanal avec personnalisation IA : Email, LinkedIn et SMS en parallele. Multipliez votre taux de reponse par 3 sans effort supplementaire.",
+  accent: "#22D3EE",
+  accentDim: "rgba(34,211,238,0.1)",
+  accentBorder: "rgba(34,211,238,0.25)",
+  accentGlow: "rgba(34,211,238,0.12)",
+  waText: "ReachWave",
+  navLinks: [
+    { label: "Fonctionnalites", href: "#features" },
+    { label: "Comment ca marche", href: "#process" },
+    { label: "Contact", href: "#cta" },
+  ],
+  metrics: [
+    { value: "x3", label: "taux de reponse" },
+    { value: "72h", label: "premiers retours" },
+    { value: "12k+", label: "sequences / mois" },
+    { value: "89%", label: "clients renouvellent" },
+  ],
+  features: [
+    { icon: "📧", title: "Orchestration multicanal", desc: "Email, LinkedIn et SMS coordonnes en une seule sequence intelligente. L'IA choisit le canal optimal selon le profil et le comportement de chaque prospect." },
+    { icon: "🤖", title: "Personnalisation IA profonde", desc: "Chaque message est redige par l'IA selon le poste, le secteur, les publications LinkedIn et l'historique du prospect. Fini les templates generiques qui nuisent a votre image." },
+    { icon: "📊", title: "Dashboard temps reel", desc: "Ouvertures, clics, reponses et conversions traces canal par canal. Identifiez les sequences qui performent et optimisez en continu sans effort." },
+  ],
+  steps: [
+    { num: "01", title: "Connectez vos outils", desc: "Gmail, LinkedIn et Twilio (SMS) via OAuth en 1 clic. Aucune configuration API manuelle. Votre stack existant est integre en moins de 20 minutes." },
+    { num: "02", title: "Definissez votre sequence", desc: "Choisissez le timing, le ton et les canaux. ReachWave personnalise automatiquement chaque message selon le profil du prospect via IA." },
+    { num: "03", title: "Activez et observez vos resultats", desc: "Le dashboard en temps reel montre ouvertures, clics et reponses canal par canal. Vous intervenez uniquement pour conclure les conversations chaudes." },
+  ],
+  testimonials: [
+    { quote: "On avait essaye 4 outils d'outreach avant ReachWave. Aucun ne personnalisait vraiment a cette echelle. En 3 semaines, notre taux de reponse LinkedIn est passe de 4% a 18%. C'est une rupture nette.", author: "Alexandre M.", role: "Head of Growth, SaaS RH" },
+    { quote: "Ce qui m'a convaincu c'est la coordination entre les canaux. Un prospect qui n'ouvre pas l'email recoit une note LinkedIn deux jours apres. Le taux de prise de RDV a double en un mois.", author: "Nathalie P.", role: "Directrice Commerciale, ESN" },
+  ],
+  ctaTitle: "Vos premieres reponses en 72 heures",
+  ctaDesc: "Setup en 1 journee. Sequences actives le lendemain. Aucune carte bancaire.",
+  ctaPrimary: "Reserver un creneau",
+  footerTagline: "Outreach multicanal automatise par l'IA",
+};
+
+export default function Page() {
+  const bg = "#04080F";
+  const bg2 = "#070D1B";
+  const card = "rgba(255,255,255,0.04)";
+  const border = "rgba(255,255,255,0.09)";
+  const gold = "#D4AF37";
+  const goldDim = "rgba(212,175,55,0.1)";
+  const goldBorder = "rgba(212,175,55,0.28)";
+  const txt1 = "#F0EDE6";
+  const txt2 = "#8B9DB5";
+  const txt3 = "#3C5068";
+  const { accent, accentDim, accentBorder, accentGlow } = P;
+
   return (
-    <div className="min-h-screen" style={{ fontFamily: "var(--font-body)" }}>
+    <div style={{ minHeight: "100vh", background: bg, color: txt1 }}>
+      <style>{`
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes pulseDot { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.4; transform:scale(1.6); } }
+        .wk-card { transition: background .3s, border-color .3s, transform .35s cubic-bezier(.34,1.2,.64,1); }
+        .wk-card:hover { background: rgba(255,255,255,0.07) !important; border-color: rgba(34,211,238,0.25) !important; transform: translateY(-6px) !important; }
+        .wk-btn { transition: opacity .2s, transform .2s, box-shadow .2s; }
+        .wk-btn:hover { opacity:.9; transform:translateY(-2px); box-shadow:0 12px 32px rgba(212,175,55,.18); }
+        .wk-wa { transition: opacity .2s, transform .2s; }
+        .wk-wa:hover { opacity:.9; transform:translateY(-2px); }
+        .wk-nav-link { color: #8B9DB5; text-decoration:none; font-size:14px; font-weight:500; transition:color .2s; }
+        .wk-nav-link:hover { color: #F0EDE6; }
+        @media(max-width:640px){ .wk-hide-sm{ display:none!important; } .wk-hero-title{ font-size:2.4rem!important; } }
+      `}</style>
 
       {/* NAVBAR */}
-      <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur border-b border-orange-100">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-            </div>
-            <span className="font-bold text-orange-900 text-lg" style={{ fontFamily: "var(--font-display)" }}>ReachWave</span>
+      <nav style={{ position:"sticky", top:0, zIndex:100, background:"rgba(4,8,15,0.82)", backdropFilter:"blur(20px)", borderBottom:`1px solid ${border}`, padding:"0 40px", height:60, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+        <span style={{ fontSize:18, fontWeight:800, letterSpacing:"-0.5px", color:txt1 }}>
+          {P.name}<span style={{ color:gold }}>.</span>
+        </span>
+        <div style={{ display:"flex", gap:28, alignItems:"center" }}>
+          <div className="wk-hide-sm" style={{ display:"flex", gap:24 }}>
+            {P.navLinks.map(l => <a key={l.label} href={l.href} className="wk-nav-link">{l.label}</a>)}
           </div>
-          <div className="hidden md:flex items-center gap-8 text-sm text-orange-700">
-            <a href="#channels" className="hover:text-orange-500 transition-colors">Canaux</a>
-            <a href="#results" className="hover:text-orange-500 transition-colors">Résultats</a>
-            <a href="#how" className="hover:text-orange-500 transition-colors">Process</a>
-          </div>
-          <a href="#cta" className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full text-sm font-bold transition-colors">
-            Lancer mes campagnes
-          </a>
+          <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn"
+            style={{ background:gold, color:"#04080F", border:"none", borderRadius:8, padding:"8px 18px", fontWeight:700, fontSize:13.5, cursor:"pointer", fontFamily:"inherit" }}>
+            Reserver →
+          </button>
         </div>
       </nav>
 
-      {/* HERO — bold typographic */}
-      <section className="pt-28 pb-16 bg-white relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-1/2 h-full bg-orange-50 -skew-x-6 translate-x-10 origin-top-right pointer-events-none" />
-        <div className="max-w-6xl mx-auto px-6 relative">
-          <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-1.5 rounded-full text-sm font-bold mb-8">
-            📢 Multicanal automatisé — Email · LinkedIn · SMS
-          </div>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="text-[120px] md:text-[160px] font-black text-orange-100 leading-none select-none absolute -left-4 top-0 pointer-events-none" style={{ fontFamily: "var(--font-display)" }} aria-hidden>×3</div>
-              <h1 className="relative text-5xl md:text-7xl font-black text-orange-950 leading-tight mb-6" style={{ fontFamily: "var(--font-display)" }}>
-                Multipliez<br />
-                vos réponses<br />
-                <span className="text-orange-500">par 3.</span>
-              </h1>
-              <p className="text-orange-700 text-xl mb-8 leading-relaxed max-w-md">
-                ReachWave orchestre vos séquences multicanal : le bon message, au bon moment, sur le bon canal — Email, LinkedIn et SMS en parallèle.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href="#cta" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-black text-lg transition-all shadow-lg shadow-orange-200">
-                  Démarrer maintenant →
-                </a>
-                <a href="#channels" className="text-orange-700 border-2 border-orange-200 hover:border-orange-500 px-8 py-4 rounded-full font-bold text-lg transition-all text-center">
-                  Voir les canaux
-                </a>
-              </div>
+      {/* HERO */}
+      <section style={{ padding:"100px 40px 80px", maxWidth:1000, margin:"0 auto", textAlign:"center", position:"relative" }}>
+        <div style={{ position:"absolute", top:-60, left:"50%", transform:"translateX(-50%)", width:700, height:600, background:`radial-gradient(ellipse at 50% 30%, ${accentGlow} 0%, transparent 60%)`, pointerEvents:"none" }} />
+        <div style={{ display:"inline-flex", alignItems:"center", gap:8, marginBottom:24, background:accentDim, border:`1px solid ${accentBorder}`, borderRadius:100, padding:"6px 18px", animation:"fadeUp .5s ease both" }}>
+          <span style={{ width:7, height:7, borderRadius:"50%", background:accent, display:"inline-block", animation:"pulseDot 2s ease-in-out infinite" }} />
+          <span style={{ color:accent, fontSize:11.5, fontWeight:700, letterSpacing:"2px", textTransform:"uppercase" }}>{P.tagLabel}</span>
+        </div>
+        <h1 className="wk-hero-title" style={{ fontSize:"clamp(2.6rem,6vw,5rem)", fontWeight:700, lineHeight:1.08, letterSpacing:"-0.03em", marginBottom:28, fontFamily:"'Instrument Serif',Georgia,serif", animation:"fadeUp .5s .08s ease both" }}>
+          {P.taglines.map((line, i) => (
+            <span key={i} style={{ display:"block", color:i===P.taglineAccentIdx?accent:txt1, fontStyle:i===P.taglineAccentIdx?"italic":"normal" }}>{line}</span>
+          ))}
+        </h1>
+        <p style={{ fontSize:"1.1rem", color:txt2, lineHeight:1.72, maxWidth:580, margin:"0 auto 48px", animation:"fadeUp .5s .16s ease both" }}>{P.desc}</p>
+        <div style={{ display:"flex", flexWrap:"wrap", justifyContent:"center", gap:14, marginBottom:44, animation:"fadeUp .5s .24s ease both" }}>
+          {P.metrics.map(m => (
+            <div key={m.label} style={{ background:card, border:`1px solid ${border}`, borderRadius:18, padding:"14px 22px", textAlign:"center", minWidth:118 }}>
+              <div style={{ fontSize:"1.7rem", fontWeight:800, color:txt1, letterSpacing:"-1.5px", lineHeight:1 }}>{m.value}</div>
+              <div style={{ fontSize:"0.62rem", color:txt3, textTransform:"uppercase", letterSpacing:"1.5px", marginTop:5 }}>{m.label}</div>
             </div>
-            <div className="space-y-4">
-              {[
-                { day: "Lun", channel: "Email", msg: "Présentation initiale + cas client pertinent", status: "Envoyé", color: "bg-blue-50 border-blue-200" },
-                { day: "Mer", channel: "LinkedIn", msg: "Connexion + note personnalisée selon son profil", status: "Vu", color: "bg-sky-50 border-sky-200" },
-                { day: "Ven", channel: "SMS", msg: "Suivi bref + lien vers démo courte", status: "Répondu ✓", color: "bg-orange-50 border-orange-200" },
-              ].map((t) => (
-                <div key={t.day} className={`${t.color} border rounded-xl p-4 flex items-center gap-4`}>
-                  <div className="text-xs font-bold text-gray-500 w-8">{t.day}</div>
-                  <div className="w-16 text-xs font-bold text-orange-600 bg-orange-100 px-2 py-1 rounded-full text-center">{t.channel}</div>
-                  <div className="flex-1 text-sm text-gray-700">{t.msg}</div>
-                  <div className="text-xs text-green-600 font-semibold whitespace-nowrap">{t.status}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
+        </div>
+        <div style={{ display:"flex", flexWrap:"wrap", gap:12, justifyContent:"center", animation:"fadeUp .5s .32s ease both" }}>
+          <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn"
+            style={{ background:gold, color:"#04080F", border:"none", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, cursor:"pointer", display:"flex", alignItems:"center", gap:8, fontFamily:"inherit" }}>
+            📅 {P.ctaPrimary}
+          </button>
+          <a href={`https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20${encodeURIComponent(P.waText)}%20avec%20Wikolabs.`}
+            target="_blank" rel="noopener noreferrer" className="wk-wa"
+            style={{ background:"#25d366", color:"#fff", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, textDecoration:"none", display:"flex", alignItems:"center", gap:8 }}>
+            💬 WhatsApp
+          </a>
         </div>
       </section>
 
-      {/* CHANNELS */}
-      <section id="channels" className="py-20 bg-orange-950 text-white">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-black text-center mb-14" style={{ fontFamily: "var(--font-display)" }}>
-            3 canaux. 1 orchestration.
+      {/* FEATURES */}
+      <section id="features" style={{ padding:"80px 40px", maxWidth:1100, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:52 }}>
+          <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Fonctionnalites</p>
+          <h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif", lineHeight:1.15 }}>
+            Tout automatise, <em style={{ fontStyle:"italic", color:gold }}>rien a gerer</em>
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { icon: "📧", channel: "Email", metrics: ["+47% d'ouvertures", "Personnalisation IA", "Suivi automatique"], color: "bg-blue-900/50 border-blue-700" },
-              { icon: "💼", channel: "LinkedIn", metrics: ["+62% d'acceptations", "Notes sur-mesure", "Engagement automatisé"], color: "bg-sky-900/50 border-sky-700" },
-              { icon: "📱", channel: "SMS", metrics: ["98% de taux d'ouverture", "Réponse en < 4min", "Lien démo intégré"], color: "bg-orange-900/50 border-orange-700" },
-            ].map((c) => (
-              <div key={c.channel} className={`${c.color} border rounded-2xl p-8`}>
-                <div className="text-5xl mb-4">{c.icon}</div>
-                <h3 className="text-2xl font-black mb-5" style={{ fontFamily: "var(--font-display)" }}>{c.channel}</h3>
-                {c.metrics.map((m) => (
-                  <div key={m} className="flex items-center gap-2 mb-2">
-                    <span className="text-orange-400">→</span>
-                    <span className="text-orange-100 text-sm">{m}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
-
-      {/* RESULTS */}
-      <section id="results" className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-black text-orange-950 text-center mb-14" style={{ fontFamily: "var(--font-display)" }}>
-            Des chiffres qui parlent
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { value: "×3", label: "taux de réponse vs email seul" },
-              { value: "72h", label: "pour les premiers retours" },
-              { value: "12k+", label: "séquences envoyées / mois" },
-              { value: "89%", label: "clients renouvellent" },
-            ].map((s) => (
-              <div key={s.label} className="text-center p-6 bg-orange-50 rounded-2xl border border-orange-100">
-                <div className="text-4xl font-black text-orange-500 mb-2" style={{ fontFamily: "var(--font-display)" }}>{s.value}</div>
-                <div className="text-sm text-orange-700">{s.label}</div>
-              </div>
-            ))}
-          </div>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))", gap:20 }}>
+          {P.features.map((f, i) => (
+            <div key={f.title} className="wk-card" style={{ background:card, border:`1px solid ${border}`, borderRadius:20, padding:"28px 28px 24px", position:"relative", overflow:"hidden" }}>
+              <div style={{ position:"absolute", top:0, left:0, right:0, height:2, background:`linear-gradient(90deg,transparent,${i===0?gold:accent},transparent)`, opacity:.6 }} />
+              <div style={{ fontSize:"2rem", marginBottom:16 }}>{f.icon}</div>
+              <h3 style={{ fontSize:"1.05rem", fontWeight:700, color:txt1, marginBottom:10 }}>{f.title}</h3>
+              <p style={{ fontSize:"0.88rem", color:txt2, lineHeight:1.7, margin:0 }}>{f.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* HOW IT WORKS */}
-      <section id="how" className="py-20 bg-orange-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-black text-orange-950 text-center mb-14" style={{ fontFamily: "var(--font-display)" }}>
-            Branché en 1 journée
-          </h2>
-          <div className="space-y-5">
-            {[
-              { n: "1", title: "Connectez vos outils", desc: "Gmail, LinkedIn, Twilio (SMS). OAuth 1-clic pour chaque canal. Aucune API à configurer manuellement." },
-              { n: "2", title: "Définissez votre séquence", desc: "Choisissez le timing et le ton. ReachWave personnalise chaque message via IA selon le profil du prospect." },
-              { n: "3", title: "Activez et observez", desc: "Le dashboard en temps réel montre ouvertures, clics, réponses — canal par canal. Vous intervenez seulement pour closer." },
-            ].map((s) => (
-              <div key={s.n} className="flex gap-5 bg-white rounded-2xl p-6 border border-orange-100">
-                <div className="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-black flex-shrink-0" style={{ fontFamily: "var(--font-display)" }}>{s.n}</div>
+      <section id="process" style={{ padding:"80px 40px", background:bg2 }}>
+        <div style={{ maxWidth:860, margin:"0 auto" }}>
+          <div style={{ textAlign:"center", marginBottom:48 }}>
+            <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Comment ca marche</p>
+            <h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif" }}>
+              Branche en <em style={{ fontStyle:"italic", color:accent }}>1 journee</em>
+            </h2>
+          </div>
+          <div style={{ display:"flex", flexDirection:"column", gap:14 }}>
+            {P.steps.map((s, i) => (
+              <div key={s.num} style={{ display:"flex", alignItems:"flex-start", gap:22, background:card, border:`1px solid ${border}`, borderRadius:18, padding:"22px 26px" }}>
+                <div style={{ flexShrink:0, width:46, height:46, background:i===0?goldDim:accentDim, border:`1px solid ${i===0?goldBorder:accentBorder}`, borderRadius:14, display:"flex", alignItems:"center", justifyContent:"center", color:i===0?gold:accent, fontWeight:800, fontSize:15 }}>
+                  {s.num}
+                </div>
                 <div>
-                  <h3 className="font-bold text-orange-950 mb-1" style={{ fontFamily: "var(--font-display)" }}>{s.title}</h3>
-                  <p className="text-orange-600 text-sm">{s.desc}</p>
+                  <h3 style={{ fontSize:"1rem", fontWeight:700, color:txt1, marginBottom:6, lineHeight:1.3 }}>{s.title}</h3>
+                  <p style={{ fontSize:"0.87rem", color:txt2, lineHeight:1.7, margin:0 }}>{s.desc}</p>
                 </div>
               </div>
             ))}
@@ -140,36 +169,60 @@
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section style={{ padding:"80px 40px", maxWidth:900, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:44 }}>
+          <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Temoignages</p>
+          <h2 style={{ fontSize:"clamp(1.6rem,3vw,2.4rem)", fontWeight:700, color:txt1, fontFamily:"'Instrument Serif',Georgia,serif" }}>Ce qu'en disent nos clients</h2>
+        </div>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(340px,1fr))", gap:20 }}>
+          {P.testimonials.map((t, i) => (
+            <div key={i} style={{ background:card, border:`1px solid ${border}`, borderLeft:`3px solid ${i===0?gold:accent}`, borderRadius:20, padding:"26px 26px 22px" }}>
+              <p style={{ fontSize:"0.92rem", color:txt2, lineHeight:1.75, fontStyle:"italic", marginBottom:20 }}>&ldquo;{t.quote}&rdquo;</p>
+              <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                <div style={{ width:38, height:38, borderRadius:"50%", background:i===0?goldDim:accentDim, border:`1px solid ${i===0?goldBorder:accentBorder}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:16 }}>👤</div>
+                <div>
+                  <div style={{ fontSize:"0.9rem", fontWeight:700, color:txt1 }}>{t.author}</div>
+                  <div style={{ fontSize:"0.72rem", color:txt3 }}>{t.role}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* CTA */}
-      <section id="cta" className="py-20 bg-orange-500">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-black text-white mb-4" style={{ fontFamily: "var(--font-display)" }}>
-            Vos premières réponses en 72h
-          </h2>
-          <p className="text-orange-100 text-xl mb-10">Setup en 1 journée. Séquences actives le lendemain.</p>
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-orange-600 hover:bg-orange-50 px-10 py-5 rounded-full font-black text-xl transition-all shadow-xl">
-              📅 Réserver un créneau →
+      <section id="cta" style={{ padding:"0 40px 100px", maxWidth:860, margin:"0 auto" }}>
+        <div style={{ background:card, border:`1px solid ${goldBorder}`, borderRadius:24, padding:"64px 48px", textAlign:"center", backgroundImage:`radial-gradient(ellipse at 50% 0%, ${goldDim} 0%, transparent 65%)` }}>
+          <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:16 }}>Demarrer</p>
+          <h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, marginBottom:14, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif" }}>{P.ctaTitle}</h2>
+          <p style={{ color:txt2, fontSize:"1rem", marginBottom:36, lineHeight:1.7 }}>{P.ctaDesc}</p>
+          <div style={{ display:"flex", flexWrap:"wrap", gap:12, justifyContent:"center" }}>
+            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn"
+              style={{ background:gold, color:"#04080F", border:"none", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, cursor:"pointer", display:"flex", alignItems:"center", gap:8, fontFamily:"inherit" }}>
+              📅 {P.ctaPrimary}
             </button>
-            <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20ReachWave%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-orange-600 hover:bg-orange-50 px-10 py-5 rounded-full font-black text-xl transition-all shadow-xl" style={{ background: "#25d366", borderColor: "#25d366" }}>
-              💬 WhatsApp →
+            <a href={`https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20${encodeURIComponent(P.waText)}%20avec%20Wikolabs.`}
+              target="_blank" rel="noopener noreferrer" className="wk-wa"
+              style={{ background:"#25d366", color:"#fff", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, textDecoration:"none", display:"flex", alignItems:"center", gap:8 }}>
+              💬 WhatsApp
             </a>
           </div>
-          <p className="text-orange-200 text-sm mt-5">Essai 14 jours. Aucune carte bancaire.</p>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-orange-950 text-orange-400 py-10">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <span className="font-black text-white" style={{ fontFamily: "var(--font-display)" }}>ReachWave</span>
-          <p className="text-sm">© 2025 ReachWave — Un produit <a href="https://wikolabs.com" className="text-orange-400 hover:text-orange-200">Wikolabs</a></p>
-          <div className="flex flex-wrap gap-4 text-sm">
-            <a href="mailto:team@wikolabs.com" className="hover:text-orange-200 transition-colors">team@wikolabs.com</a>
-            <span>·</span>
-            <a href="tel:+261386626100" className="hover:text-orange-200 transition-colors">+261 38 66 261 00</a>
-            <span>·</span>
-            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer" className="hover:text-orange-200 transition-colors" style={{cursor:"pointer",background:"none",border:"none",padding:0,font:"inherit",color:"inherit",textDecoration:"none"}}>Prendre RDV</button>
+      <footer style={{ borderTop:`1px solid ${border}`, padding:"32px 40px" }}>
+        <div style={{ maxWidth:1200, margin:"0 auto", display:"flex", flexWrap:"wrap", justifyContent:"space-between", alignItems:"center", gap:16 }}>
+          <div>
+            <span style={{ fontWeight:800, fontSize:16, color:txt1 }}>{P.name}</span><span style={{ color:gold }}>.</span>
+            <span style={{ display:"block", fontSize:12, color:txt3, marginTop:3 }}>{P.footerTagline}</span>
+          </div>
+          <p style={{ fontSize:13, color:txt3 }}>© 2026 {P.name} — Un produit <a href="https://wikolabs.com" style={{ color:txt2, textDecoration:"none" }}>Wikolabs</a></p>
+          <div style={{ display:"flex", flexWrap:"wrap", gap:16, fontSize:13, alignItems:"center" }}>
+            <a href="mailto:team@wikolabs.com" style={{ color:txt3, textDecoration:"none" }}>team@wikolabs.com</a>
+            <span style={{ color:txt3 }}>·</span>
+            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' style={{ background:"none", border:"none", color:txt3, fontSize:13, cursor:"pointer", fontFamily:"inherit", padding:0 }}>Prendre RDV</button>
           </div>
         </div>
       </footer>
