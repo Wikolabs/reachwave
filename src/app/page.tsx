@@ -34,14 +34,14 @@ export default function DemoPage() {
 
   const t = lang === "fr" ? {
     back: "Retour", title: "Démo", sub: PRODUCT + ", sequence outreach multicanal IA",
-    desc: "Decrivez un lead + votre offre. L'agent génère une sequence outbound 14 jours sur Email + LinkedIn + SMS, avec copy prêt-a-envoyer. Aucun envoi réel, c'est un POC qui demontre la logique de production.",
-    leadLabel: "Lead cible", leadPlaceholder: "ex : Sarah Chen, VP Sales chez TechCorp (SaaS B2B, 200 emp, Paris). Levee Series B le mois dernier, recrute 4 AE.",
+    desc: "Décrivez un lead + votre offre. L'agent génère une sequence outbound 14 jours sur Email + LinkedIn + SMS, avec copy prêt-a-envoyer. Aucun envoi réel, c'est un POC qui démontre la logique de production.",
+    leadLabel: "Lead cible", leadPlaceholder: "ex : Sarah Chen, VP Sales chez TechCorp (SaaS B2B, 200 emp, Paris). Levée Series B le mois dernier, recrute 4 AE.",
     offerLabel: "Votre offre", offerPlaceholder: "ex : Plateforme d'orchestration outbound multicanal, Email + LinkedIn + SMS automatises avec IA. Résultat : +40% reply rate.",
     generate: "Générer la sequence 14 jours", generating: "Génération en cours...",
     briefTitle: "Sequence outreach", emptyHint: "La sequence multicanal apparaitra ici.",
     sendGmail: "Envoyer via Gmail", sendLinkedin: "Lancer via LinkedIn Sales Nav", scheduleSms: "Programmer SMS Twilio",
-    sentGmailMock: "Sequence envoyee via Gmail API (mode démo, aucun email réel envoyé)",
-    sentLinkedinMock: "Sequence lancee sur LinkedIn Sales Navigator (mode démo, pas de connexion réelle)",
+    sentGmailMock: "Sequence envoyée via Gmail API (mode démo, aucun email réel envoyé)",
+    sentLinkedinMock: "Sequence lancée sur LinkedIn Sales Navigator (mode démo, pas de connexion réelle)",
     scheduledSmsMock: "SMS programme via Twilio (mode démo, pas d'envoi réel)",
     fallback: "Mode statique : la clé LLM sera ajoutée au prochain déploiement.",
     poweredBy: "Modèle :",
